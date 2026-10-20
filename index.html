@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyMate | Study Planner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="topbar">
+        <div>
+            <h1>StudyMate</h1>
+            <p>Your personal study companion</p>
+        </div>
+
+        <button id="themeToggle" class="theme-toggle" type="button"
+                aria-label="Switch to light mode">
+            ☀️ Light Mode
+        </button>
+    </header>
+
+    <main class="container">
+
+        <section class="welcome">
+            <h2>Welcome back! 👋</h2>
+            <p>Small steps every day lead to big results.</p>
+        </section>
+
+        <!-- Dashboard -->
+        <section class="dashboard">
+            <div class="card total-card">
+                <span class="card-icon">📚</span>
+                <h3>Total Tasks</h3>
+                <p id="totalCount">0</p>
+            </div>
+
+            <div class="card">
+                <span class="card-icon">📖</span>
+                <h3>Subjects</h3>
+                <p id="subjectCount">0</p>
+            </div>
+
+            <div class="card">
+                <span class="card-icon">⏳</span>
+                <h3>Pending Tasks</h3>
+                <p id="pendingCount">0</p>
+            </div>
+
+            <div class="card">
+                <span class="card-icon">✅</span>
+                <h3>Completed Tasks</h3>
+                <p id="completedCount">0</p>
+            </div>
+        </section>
+
+        <!-- Progress -->
+        <section class="panel progress-panel">
+            <div class="progress-heading">
+                <div>
+                    <h2>Study Progress</h2>
+                    <p>Keep moving towards your goals.</p>
+                </div>
+                <strong id="progressPercent">0%</strong>
+            </div>
+
+            <div class="progress-track">
+                <div id="progressBar" class="progress-fill"></div>
+            </div>
+
+            <p id="progressMessage">Let's get started!</p>
+        </section>
+
+        <!-- Existing tasks and subjects -->
+        <section class="content-grid">
+
+            <div class="panel">
+                <h2>📝 Add Study Task</h2>
+
+                <label for="taskInput">Task name</label>
+                <input type="text" id="taskInput"
+                       placeholder="e.g. Study Python">
+
+                <label for="dueDate">Due date</label>
+                <input type="date" id="dueDate">
+
+                <label for="priority">Priority</label>
+                <select id="priority">
+                    <option value="High">High</option>
+                    <option value="Medium" selected>Medium</option>
+                    <option value="Low">Low</option>
+                </select>
+
+                <button onclick="addTask()">Add Task</button>
+
+                <label for="searchTask">Find a task</label>
+                <input type="text" id="searchTask"
+                       placeholder="Search tasks..."
+                       onkeyup="searchTasks()">
+
+                <ul id="taskList"></ul>
+            </div>
+
+            <div class="panel">
+                <h2>📚 Add Subject</h2>
+
+                <label for="subjectInput">Subject name</label>
+                <input type="text" id="subjectInput"
+                       placeholder="e.g. Computer Science">
+
+                <button onclick="addSubject()">Add Subject</button>
+
+                <ul id="subjectList"></ul>
+            </div>
+
+        </section>
+
+        <!-- StudyMate 2.0: Subject, Unit and Topic -->
+        <section class="panel study-library" id="studyLibrary">
+            <h2>🎓 My Study Library</h2>
+            <p>Organise your syllabus into subjects, units and topics.</p>
+
+            <div class="study-form">
+                <label for="librarySubjectName">New subject</label>
+                <input type="text" id="librarySubjectName"
+                       placeholder="e.g. Web Technology">
+
+                <button type="button" id="addLibrarySubject">
+                    + Add Library Subject
+                </button>
+            </div>
+
+            <div id="libraryMessage" role="status" aria-live="polite"></div>
+            <div id="librarySubjects">
+                <p>Loading subjects...</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        StudyMate · Plan better, learn better.
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
